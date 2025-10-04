@@ -219,6 +219,34 @@
             text-overflow: ellipsis;
         }
 
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, rgba(248, 222, 252, 0.8), rgba(188, 186, 212, 0.8));
+            border-radius: 10px;
+            border: 2px solid rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 15px rgba(248, 222, 252, 0.5);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, rgba(248, 222, 252, 1), rgba(188, 186, 212, 1));
+            box-shadow: 0 0 25px rgba(248, 222, 252, 0.8);
+        }
+
+        /* Firefox */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(248, 222, 252, 0.8) rgba(0, 0, 0, 0.2);
+        }
+
         @media (max-width: 500px) {
             .main-card {
                 width: 100%;
