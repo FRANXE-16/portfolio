@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRANXE Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            padding: 24px;
+        }
+
+        .main-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.75), rgba(248, 222, 252, 0.65));
+            backdrop-filter: blur(100px) saturate(180%);
+            border-radius: 28px;
+            padding: 48px 40px;
+            width: 460px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1),
+                        0 0 60px rgba(248, 222, 252, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .profile-section {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+
+        .profile-image {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            margin: 0 auto 24px;
+            object-fit: cover;
+            border: 3px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-name {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 14px;
+            background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet, red);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbow 3s linear infinite;
+            letter-spacing: -0.5px;
+        }
+
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        .profile-bio {
+            color: #1a1a1a;
+            font-size: 15px;
+            margin-bottom: 18px;
+            line-height: 1.6;
+            font-weight: 500;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+        }
+
+        .location {
+            color: #2a2a2a;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+
+        .location i {
+            font-size: 15px;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.7));
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(0, 0, 0, 0.1), 
+                transparent);
+            margin: 28px 0;
+        }
+
+        .section-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            opacity: 0.7;
+        }
+
+        .time-section {
+            margin-bottom: 28px;
+        }
+
+        .time-display {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+            text-align: center;
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .date-display {
+            font-size: 13px;
+            color: #2a2a2a;
+            opacity: 0.75;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.55);
+            border-radius: 14px;
+            margin-bottom: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .social-link:last-child {
+            margin-bottom: 0;
+        }
+
+        .social-link:hover {
+            background: rgba(255, 255, 255, 0.75);
+            transform: translateY(-2px) translateX(4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1),
+                        0 0 30px rgba(248, 222, 252, 0.4);
+        }
+
+        .social-icon-box {
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover .social-icon-box {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+            transform: scale(1.05);
+        }
+
+        .social-icon-box i {
+            font-size: 20px;
+            color: #555;
+        }
+
+        .social-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .social-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+            letter-spacing: 0.2px;
+        }
+
+        .social-url {
+            font-size: 12px;
+            color: #3a3a3a;
+            opacity: 0.75;
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        @media (max-width: 500px) {
+            .main-card {
+                width: 100%;
+                margin: 0 16px;
+                padding: 36px 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="https://r2.guns.lol/ed392372-07f5-4950-8f45-925f0293c879.gif" alt="Background" class="bg-image">
+    
+    <div class="container">
+        <div class="main-card">
+            <!-- Profile Section -->
+            <div class="profile-section">
+                <img src="https://r2.guns.lol/7c062c65-c6f7-4342-9461-55e709ab2d6c.webp" alt="Profile" class="profile-image">
+                <h1 class="profile-name">FRANXE</h1>
+                <p class="profile-bio">I'm FRANXE, a full-stack web dev and graphic designer tryna make it big.</p>
+                <p class="location"><i class="fa-solid fa-location-dot"></i>Florida</p>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Eastern Time Section -->
+            <div class="time-section">
+                <div class="section-title">Eastern Time</div>
+                <div class="time-display" id="time">--:--:--</div>
+                <div class="date-display" id="date">Loading...</div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Socials Section -->
+            <div class="socials-section">
+                <div class="section-title">Socials</div>
+                
+                <a href="https://youtube.com/@FranxeBlacket" target="_blank" class="social-link">
+                    <div class="social-icon-box">
+                        <i class="fa-brands fa-youtube"></i>
+                    </div>
+                    <div class="social-info">
+                        <div class="social-title">YouTube</div>
+                        <div class="social-url">youtube.com/@FranxeBlacket</div>
+                    </div>
+                </a>
+
+                <a href="https://github.com/franxe-16" target="_blank" class="social-link">
+                    <div class="social-icon-box">
+                        <i class="fa-brands fa-github"></i>
+                    </div>
+                    <div class="social-info">
+                        <div class="social-title">GitHub</div>
+                        <div class="social-url">github.com/franxe-16</div>
+                    </div>
+                </a>
+
+                <a href="https://franxe.shop" target="_blank" class="social-link">
+                    <div class="social-icon-box">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <div class="social-info">
+                        <div class="social-title">Custom URL</div>
+                        <div class="social-url">franxe.shop</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const timeOptions = { 
+                timeZone: 'America/New_York', 
+                hour12: true, 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit' 
+            };
+            const timeString = now.toLocaleTimeString('en-US', timeOptions);
+            document.getElementById('time').textContent = timeString;
+
+            const dateOptions = { 
+                timeZone: 'America/New_York', 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            };
+            const dateString = now.toLocaleDateString('en-US', dateOptions);
+            document.getElementById('date').textContent = dateString;
+        }
+
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>
